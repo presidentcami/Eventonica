@@ -7,14 +7,17 @@ import CardGroup from 'react-bootstrap/CardGroup';
 function Events() {
     const [events, setEvents] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/events")
-          .then((response) => response.json())
-          .then(events => {
-            setEvents(events); 
-            console.log('Events fetched...', events);
-            });
-          }, []);
+  const getRequest = () => {
+    fetch("http://localhost:8080/api/events")
+      .then((response) => response.json())
+      .then(events => {
+        setEvents(events);
+        console.log('Events fetched...', events);
+      });
+  }
+  useEffect(() => {
+    getRequest()
+  }, []);
 
   return (
     <CardGroup className="Events">
