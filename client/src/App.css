@@ -17,3 +17,7 @@ h1 {
 .onClick {
   cursor: pointer;
 }
+
+.favorite {
+  color: rgb(254, 31, 124);
+}

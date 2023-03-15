@@ -24,7 +24,7 @@ const EventCard = (props) =>{
     return(
     <Card style={{ width: '18rem' }}>
     <Card.Body>
-      <FontAwesomeIcon onClick={changeIcon} icon={favorite} className="mb-2 onClick" spin />
+      <FontAwesomeIcon onClick={changeIcon} icon={favorite} className="mb-2 onClick favorite" size='lg' spin />
       <Card.Title>{props.title}</Card.Title>
       <Card.Subtitle className="mb-2 text-muted">Date: {!props.time ? "TBD" : <Moment format={"DD/MM/YYYY"}>{props.time}</Moment>}</Card.Subtitle>
       <Card.Text>
