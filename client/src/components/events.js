@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
-import EventCard from "./event";
+import { useEffect } from "react";
+import EventCard from "./eventCard";
 import CardGroup from 'react-bootstrap/CardGroup';
 
 
 
 function Events({ events, setEvents }) {
-    // const [events, setEvents] = useState([]);
 
   const getRequest = () => {
     fetch("http://localhost:8080/api/events")
@@ -17,7 +16,8 @@ function Events({ events, setEvents }) {
   }
   useEffect(() => {
     getRequest()
-  }, []);
+  }, // eslint-disable-next-line
+  []);
 
   return (
     <CardGroup className="Events">

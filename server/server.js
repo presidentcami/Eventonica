@@ -89,9 +89,20 @@ app.post("/api/events/", async (req, res) => {
         const addEvent = await db.query("INSERT INTO events (title, location, eventtime) VALUES ($1, $2, $3) RETURNING *", 
             [newEvent.title, newEvent.location, newEvent.eventtime]);
         let response = addEvent.rows[0];
-        
+
         const { rows: events } = await db.query('SELECT * FROM events');
         res.send(events);
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// delete an event
+app.delete("/api/events/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteEvent = await db.query("DELETE FROM events WHERE id = $1", [id])
+        res.json("Event was deleted")
     } catch (error) {
         console.error(error.message)
     }

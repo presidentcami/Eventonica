@@ -17,22 +17,18 @@ const putRequest = async (favoriteOrNot, id) => {
     const responseObj = await response.json();
     console.log("put request content", responseObj)
     return responseObj;
-    // window.location = "/"; // may not actually need this
 }
 
-const FavoriteButton = ({ id, events, favorite  }) => {
+const FavoriteButton = ({ id, favorite  }) => {
 
-    
     const [isFavorite, setIsFavorite] = useState(favorite);
     // console.log(id)
     const changeTrueOrFalse = async (e) => {
         e.preventDefault();
-        const responseObj = await putRequest(!isFavorite, id)
+        const responseObj = await putRequest(!isFavorite, id) // not 100% sure what's happening (awaiting cuz it's a putrequest? sending)
        
-        setIsFavorite(responseObj.newFaveValue)
+        setIsFavorite(responseObj.newFaveValue) // where are we changing again what is favorite and what is not? oh on line 30
     }
-    // console.log(events)
-
 
     return (
         <div>
