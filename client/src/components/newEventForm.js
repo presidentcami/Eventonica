@@ -33,9 +33,27 @@ const NewEventForm = () => {
     };
 
 // console.log("state", state)
+    const onSubmit = async(e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:8080/api/events/", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(state),
+            });
+            console.log(response)
+        } catch (error) {
+            console.error(error.message)
+        }
+
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label>Event Title</label>
                 <input 
                     type="text" 

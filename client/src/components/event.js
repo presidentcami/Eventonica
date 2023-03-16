@@ -15,7 +15,7 @@ const EventCard = (props) =>{
 
     event[`${id}`].favorite = favoriteOrNot;
 
-    console.log("what is this boolean?", event[`${id}`].favorite)
+    // console.log("what is this boolean?", event[`${id}`].favorite)
 
     const response = await fetch(`http://localhost:8080/api/events/${id}`, {
           method: "PUT",
@@ -25,7 +25,7 @@ const EventCard = (props) =>{
           body: JSON.stringify({favorite: favoriteOrNot}),
         })
     const content = await response.json();
-    console.log("put request content", content, "favorite true or false", event[`${id}`].favorite, "event --> updates on refresh but updates database", props.event)
+    console.log("put request content", content)
         window.location = "/"; // may not actually need this
   }
 
