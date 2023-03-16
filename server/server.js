@@ -64,7 +64,8 @@ app.put("/api/events/:id", async (req,res) => {
     try {
         const id = req.params.id;
         let favorite = req.body.favorite;
-        const updateFavorite = await db.query("UPDATE events SET favorite = $1 WHERE id = $2", [!favorite, id]);
+        console.log("id", id, "favorite", favorite)
+        const updateFavorite = await db.query("UPDATE events SET favorite = $1 WHERE id = $2", [favorite, id]);
         // const updateFavorite = await db.query("UPDATE events SET favorite = true WHERE id = $1", [id]);
         // do a ternary - if fav
 

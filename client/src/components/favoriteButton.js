@@ -19,7 +19,7 @@ const FavoriteButton = ({ id, events, favorite, putRequest }) => {
         setIsFavorite(!isFavorite)
         // how can we do this without manually setting 'setIsFavorite'?
     }
-    console.log(events)
+    // console.log(events)
 
     return (
         <div>
