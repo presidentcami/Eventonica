@@ -3,7 +3,7 @@ import Moment from "react-moment";
 import DeleteButton from './deleteButton';
 import FavoriteButton from './favoriteButton';
 
-const EventCard = ({ event }) =>{
+const EventCard = ({ event, setEvents }) =>{
   const { id, title, location, eventtime, favorite } = event
 
 // console.log("event component id", id)
@@ -16,7 +16,7 @@ const EventCard = ({ event }) =>{
       <Card.Text>
         {location}
       </Card.Text>
-      <DeleteButton />
+      <DeleteButton id={id} setEvents={setEvents} />
     </Card.Body>
   </Card>
   )}

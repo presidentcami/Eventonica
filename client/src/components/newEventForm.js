@@ -35,13 +35,6 @@ const NewEventForm = ({ setEvents }) => {
 // console.log("state", state)
     const onSubmit = async(e) => {
         e.preventDefault();
-
-        // fetch("http://localhost:8080/api/events")
-        //     .then((response) => response.json())
-        //     .then(events => {
-        //         setEvents(events);
-        //         console.log('Events fetched...', events);
-        //     });
         try {
             fetch("http://localhost:8080/api/events/", {
                 method: "POST",
@@ -52,7 +45,7 @@ const NewEventForm = ({ setEvents }) => {
                 body: JSON.stringify(state),
             })
             .then((response) => response.json())
-            .then (events => {
+            .then(events => {
                 setEvents(events);
                 console.log('Events fetched when new event is added', events);
 

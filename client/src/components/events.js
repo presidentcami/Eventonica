@@ -3,7 +3,6 @@ import EventCard from "./eventCard";
 import CardGroup from 'react-bootstrap/CardGroup';
 
 
-
 function Events({ events, setEvents }) {
 
   const getRequest = () => {
@@ -22,7 +21,7 @@ function Events({ events, setEvents }) {
   return (
     <CardGroup className="Events">
             {events.map(event =>
-            <EventCard event={event} key={event.id} />
+            <EventCard event={event} key={event.id} setEvents={setEvents} />
             )}
     </CardGroup>
   );

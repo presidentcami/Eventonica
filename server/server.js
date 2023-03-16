@@ -102,7 +102,10 @@ app.delete("/api/events/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const deleteEvent = await db.query("DELETE FROM events WHERE id = $1", [id])
-        res.json("Event was deleted")
+        // res.json("Event was deleted")
+
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
     } catch (error) {
         console.error(error.message)
     }
