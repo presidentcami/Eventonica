@@ -75,4 +75,22 @@ app.put("/api/events/:id", async (req,res) => {
     }
 })
 
+// add a new event
+app.post("/api/events/", async (req, res) => {
+    try {
+        console.log(req.body)
+        const title = req.body.title;
+        const location = req.body.location;
+        const eventtime = req.body.eventtime;
+
+        const addEvent = await db.query("INSERT INTO events (title, location, eventtime) VALUES ($1, $2, $3) RETURNING *", 
+        [title, location, eventtime]);
+        let response = addEvent.rows[0];
+        console.log(response)
+        // res.json(response);
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
 app.listen(PORT, () => console.log(`Hola! Server running on Port http://localhost:${PORT}`));

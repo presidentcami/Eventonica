@@ -7,10 +7,7 @@ import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
 const FavoriteButton = ({ id, events, favorite, putRequest }) => {
 
     const [isFavorite, setIsFavorite] = useState(favorite);
-    // const [favoriteIcon, setFavoriteIcon] = useState(farHeart)
-// console.log(dbFavorite)
-    // update favorite function
-    // console.log(id, favorite)
+
     // write to database and update isFavorite
     // useEffect to trigger something when a value changes, setIsfavortite when favorite as a prop changes
     const changeTrueOrFalse = (e) => {
