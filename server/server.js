@@ -66,10 +66,11 @@ app.put("/api/events/:id", async (req,res) => {
         let favorite = req.body.favorite;
         console.log("id", id, "favorite", favorite)
         const updateFavorite = await db.query("UPDATE events SET favorite = $1 WHERE id = $2", [favorite, id]);
-        // const updateFavorite = await db.query("UPDATE events SET favorite = true WHERE id = $1", [id]);
+        // console.log("update favorite", updateFavorite)
+        
         // do a ternary - if fav
 
-        res.json("Favorite was updated");
+        res.json({message: "Favorite is updated", newFaveValue: favorite});
     } catch (error) {
         console.error(error.message)
     }
@@ -88,8 +89,9 @@ app.post("/api/events/", async (req, res) => {
         const addEvent = await db.query("INSERT INTO events (title, location, eventtime) VALUES ($1, $2, $3) RETURNING *", 
             [newEvent.title, newEvent.location, newEvent.eventtime]);
         let response = addEvent.rows[0];
-        console.log(response)
-        // res.json(response);
+        
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
     } catch (error) {
         console.error(error.message)
     }

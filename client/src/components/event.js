@@ -4,40 +4,19 @@ import Card from 'react-bootstrap/Card';
 import Moment from "react-moment";
 import FavoriteButton from './favoriteButton';
 
-const EventCard = (props) =>{
-  
-  const id = props.id
-  console.log(props.event)
-// need to pass event_id, will also be in my request URL
-  const putRequest = async(favoriteOrNot) => {
-    // let favorite = props.favorite;
-    let event = props.event;
+const EventCard = ({ event }) =>{
+  const { id, title, location, eventtime, favorite } = event
 
-    event[`${id}`].favorite = favoriteOrNot;
-
-    // console.log("what is this boolean?", event[`${id}`].favorite)
-
-    const response = await fetch(`http://localhost:8080/api/events/${id}`, {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json" },
-          body: JSON.stringify({favorite: favoriteOrNot}),
-        })
-    const content = await response.json();
-    console.log("put request content", content)
-        window.location = "/"; // may not actually need this
-  }
-
+// console.log("event component id", id)
     return(
     <Card style={{ width: '18rem' }}>
     <Card.Body>
-      <FavoriteButton id={props.id} events={props.event} favorite={props.favorite} putRequest={putRequest} />
+      <FavoriteButton id={id} event={event} favorite={favorite} />
       {/* need to pass id in the event */}
-      <Card.Title>{props.title}</Card.Title>
-      <Card.Subtitle className="mb-2 text-muted">Date: {!props.time ? "TBD" : <Moment format={"DD/MM/YYYY"}>{props.time}</Moment>}</Card.Subtitle>
+      <Card.Title>{title}</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">Date: {!eventtime ? "TBD" : <Moment format={"DD/MM/YYYY"}>{eventtime}</Moment>}</Card.Subtitle>
       <Card.Text>
-        {props.location}
+        {location}
       </Card.Text>
     </Card.Body>
   </Card>

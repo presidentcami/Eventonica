@@ -4,8 +4,8 @@ import CardGroup from 'react-bootstrap/CardGroup';
 
 
 
-function Events() {
-    const [events, setEvents] = useState([]);
+function Events({ events, setEvents }) {
+    // const [events, setEvents] = useState([]);
 
   const getRequest = () => {
     fetch("http://localhost:8080/api/events")
@@ -22,7 +22,7 @@ function Events() {
   return (
     <CardGroup className="Events">
             {events.map(event =>
-            <EventCard event={events} key={event.id} id={event.id} favorite={event.favorite} title={event.title} location={event.location} time={event.eventtime}/>
+            <EventCard event={event} key={event.id} />
             )}
     </CardGroup>
   );

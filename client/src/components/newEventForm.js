@@ -18,7 +18,7 @@ import { useReducer } from 'react'
         }
     };
 
-const NewEventForm = () => {
+const NewEventForm = ({ setEvents }) => {
 
     const [state, dispatch] = useReducer(reducer, initialValue);
 
@@ -35,16 +35,30 @@ const NewEventForm = () => {
 // console.log("state", state)
     const onSubmit = async(e) => {
         e.preventDefault();
+
+        // fetch("http://localhost:8080/api/events")
+        //     .then((response) => response.json())
+        //     .then(events => {
+        //         setEvents(events);
+        //         console.log('Events fetched...', events);
+        //     });
         try {
-            const response = await fetch("http://localhost:8080/api/events/", {
+            fetch("http://localhost:8080/api/events/", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(state),
-            });
-            console.log(response)
+            })
+            .then((response) => response.json())
+            .then (events => {
+                setEvents(events);
+                console.log('Events fetched when new event is added', events);
+
+            })
+            // console.log(response)
+            // window.location = "/"; 
         } catch (error) {
             console.error(error.message)
         }
