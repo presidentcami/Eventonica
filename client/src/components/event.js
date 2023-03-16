@@ -26,7 +26,7 @@ const EventCard = (props) =>{
         })
     const content = await response.json();
     console.log("put request content", content, "favorite true or false", event[`${id}`].favorite, "event --> updates on refresh but updates database", props.event)
-        window.location = "/";
+        window.location = "/"; // may not actually need this
   }
 
     return(
