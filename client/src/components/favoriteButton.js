@@ -1,28 +1,29 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
 
-const FavoriteButton = () => {
+const FavoriteButton = ({ id, events, favorite, putRequest }) => {
 
-    const [favorite, setFavorite] = useState(farHeart)
-
-    const changeIcon = (e) => {
+    const [isFavorite, setIsFavorite] = useState(favorite);
+    // const [favoriteIcon, setFavoriteIcon] = useState(farHeart)
+// console.log(dbFavorite)
+    // update favorite function
+    // console.log(id, favorite)
+    // write to database and update isFavorite
+    // useEffect to trigger something when a value changes, setIsfavortite when favorite as a prop changes
+    const changeTrueOrFalse = (e) => {
         e.preventDefault();
-        let favoriteOrNot;
-        if (favorite === farHeart) {
-            favoriteOrNot = fasHeart;
-            setFavorite(favoriteOrNot);
-        } else {
-            favoriteOrNot = farHeart;
-            setFavorite(favoriteOrNot);
-        }
+        putRequest(!isFavorite)
+        setIsFavorite(!isFavorite)
+        // how can we do this without manually setting 'setIsFavorite'?
     }
+    console.log(events)
 
     return (
         <div>
-            <FontAwesomeIcon onClick={changeIcon} icon={favorite} className="mb-2 onClick favorite" size='lg' spin />
+            <FontAwesomeIcon onClick={changeTrueOrFalse} icon={isFavorite ? solidHeart : emptyHeart} className="mb-2 onClick favorite" size='lg' spin />
         </div>
     )
 }
