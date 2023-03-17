@@ -49,11 +49,12 @@ h1 {
   color: rgb(254, 31, 124);
 }
 
-.newEventForm {
+.button {
   margin: 60px;
+  margin-left: 40%;
   flex-direction: row;
-  /* display: inline-block; */
-  justify-content: space-evenly;
+  width: 200px;
+  justify-content: center;
 }
 
 .trashIcon {
