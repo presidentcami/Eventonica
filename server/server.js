@@ -60,7 +60,7 @@ app.get("/api/events/:id", async(req, res) => {
 })
 
 // update the favorites column
-app.put("/api/events/:id", async (req,res) => {
+app.put("/api/events/favorite/:id", async (req,res) => {
     try {
         const id = req.params.id;
         let favorite = req.body.favorite;
@@ -76,25 +76,25 @@ app.put("/api/events/:id", async (req,res) => {
 
 // edit an event
 
-// app.put("/api/events/:id", async (req, res) => {
-//     try {
-//         const id = req.params.id;
-//         const eventEdited = {
-//             title: req.body.title,
-//             location: req.body.location,
-//             eventtime: req.body.eventtime,
-//         }
-//         console.log("id", id, eventEdited)
-//         const updateEvent = await db.query("UPDATE events SET title = $1, location = $2, eventtime = $3 WHERE id = $4", 
-//             [eventEdited.title, eventEdited.location, eventEdited.eventtime, id]);
+app.put("/api/events/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const eventEdited = {
+            title: req.body.title,
+            location: req.body.location,
+            eventtime: req.body.eventtime,
+        }
+        console.log("id", id, req.body)
+        const updateEvent = await db.query("UPDATE events SET title = $1, location = $2, eventtime = $3 WHERE id = $4", 
+            [eventEdited.title, eventEdited.location, eventEdited.eventtime, id]);
 
-//         // let response = updateEvent.rows[0];
-//         // const { rows: events } = await db.query('SELECT * FROM events');
-//         res.json("event was updated");
-//     } catch (error) {
-//         console.error(error.message)
-//     }
-// })
+        // let response = updateEvent.rows[0];
+        // const { rows: events } = await db.query('SELECT * FROM events');
+        res.json("event was updated");
+    } catch (error) {
+        console.error(error.message)
+    }
+})
 
 
 // add a new event

@@ -18,6 +18,7 @@ const EventCard = ({ event, setEvents }) =>{
       </Card.Text>
       <DeleteButton id={id} setEvents={setEvents} />
     </Card.Body>
+    
   </Card>
   )}
 

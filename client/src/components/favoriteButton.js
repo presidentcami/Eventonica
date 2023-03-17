@@ -5,7 +5,7 @@ import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
 
 const putRequest = async (favoriteOrNot, id) => {
     console.log(id)
-    const response = await fetch(`http://localhost:8080/api/events/${id}`, {
+    const response = await fetch(`http://localhost:8080/api/events/favorite/${id}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",

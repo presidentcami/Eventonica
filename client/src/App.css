@@ -60,4 +60,7 @@ h1 {
 .trashIcon {
   flex-direction: column;
   align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
 }
