@@ -59,8 +59,8 @@ const NewEventForm = ({ setEvents }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className='newEventForm'>
+            <form  onSubmit={onSubmit}>
                 <label>Event Title</label>
                 <input 
                     type="text" 

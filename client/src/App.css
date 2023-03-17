@@ -1,5 +1,6 @@
 .App {
-  display: grid;
+  display: grid; 
+  /* display: grid originally */
   align-items: center;
   justify-content: center;
   margin-top: 50px;
@@ -18,6 +19,44 @@ h1 {
   cursor: pointer;
 }
 
+@keyframes tilt-n-move-shaking {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(5px, 5px) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(0, 0) rotate(0eg);
+  }
+
+  75% {
+    transform: translate(-5px, 5px) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.onClick:hover {
+  animation: tilt-n-move-shaking 0.25s infinite;
+}
+
 .favorite {
   color: rgb(254, 31, 124);
+}
+
+.newEventForm {
+  margin: 60px;
+  flex-direction: row;
+  /* display: inline-block; */
+  justify-content: space-evenly;
+}
+
+.trashIcon {
+  flex-direction: column;
+  align-self: flex-end;
 }
