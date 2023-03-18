@@ -32,7 +32,7 @@ const EditEventButton = ({ event, setEvents }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => {
+    const handleShow = () => { // magic is happening here
         initialValue.title = title;
         initialValue.location = location;
         initialValue.eventtime = eventtime;
