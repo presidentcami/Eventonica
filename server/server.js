@@ -79,18 +79,18 @@ app.put("/api/events/favorite/:id", async (req,res) => {
 app.put("/api/events/:id", async (req, res) => {
     try {
         const id = req.params.id;
-        const eventEdited = {
-            title: req.body.title,
-            location: req.body.location,
-            eventtime: req.body.eventtime,
-        }
+        const { title, location, eventtime } = req.body;
+        // const eventEdited = {
+        //     title: req.body.title,
+        //     location: req.body.location,
+        //     eventtime: req.body.eventtime,
+        // }
         console.log("id", id, req.body)
         const updateEvent = await db.query("UPDATE events SET title = $1, location = $2, eventtime = $3 WHERE id = $4", 
-            [eventEdited.title, eventEdited.location, eventEdited.eventtime, id]);
+            [title, location, eventtime, id]);
 
-        // let response = updateEvent.rows[0];
-        // const { rows: events } = await db.query('SELECT * FROM events');
-        res.json("event was updated");
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
     } catch (error) {
         console.error(error.message)
     }

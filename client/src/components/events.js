@@ -17,7 +17,7 @@ function Events({ events, setEvents }) {
     getRequest()
   }, // eslint-disable-next-line
   []);
-
+  
   return (
     <CardGroup className="Events">
             {events.map(event =>

@@ -13,6 +13,7 @@
 h1 {
   color: #00556e;
   margin-bottom: 50px !important;
+  align-items: center;
 }
 
 .onClick {
@@ -63,4 +64,8 @@ h1 {
   position: absolute;
   bottom: 0;
   padding: 10px;
+}
+
+.newEventForm, .editEventForm {
+  padding: 20px;
 }

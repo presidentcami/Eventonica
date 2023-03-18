@@ -24,7 +24,7 @@ const DeleteButton = ({ id, setEvents }) => {
 
     return (
         <div>
-            <FontAwesomeIcon className='trashIcon onClick' icon={solidTrash} onClick={deleteRequest} />
+            <FontAwesomeIcon className='trashIcon onClick' icon={solidTrash} onClick={deleteRequest} size='lg' />
         </div>
     )
 }
