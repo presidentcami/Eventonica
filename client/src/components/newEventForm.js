@@ -29,7 +29,11 @@ const NewEventForm = ({ setEvents }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        initialValue.title = '';
+        initialValue.location = ''; 
+        initialValue.eventtime = '';
+        setShow(true)};
 
     const inputAction = (event) => {
         event.preventDefault();
@@ -82,7 +86,6 @@ const NewEventForm = ({ setEvents }) => {
                                 id="add-event-title"
                                 placeholder="The Title of your Event"
                                 required
-                                defaultValue={state.title} //state
                                 name="title"
                                 onChange={inputAction}
                             />
@@ -94,7 +97,6 @@ const NewEventForm = ({ setEvents }) => {
                                 id="add-event-location"
                                 placeholder="The Location of your Event"
                                 required
-                                defaultValue={state.location} //state
                                 name="location"
                                 onChange={inputAction}
                             />
@@ -104,7 +106,6 @@ const NewEventForm = ({ setEvents }) => {
                             <Form.Control
                                 type="date"
                                 id="add-event-date"
-                                defaultValue={state.eventtime} //state
                                 name="eventtime"
                                 onChange={inputAction}
                             />
