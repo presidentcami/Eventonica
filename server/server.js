@@ -48,6 +48,88 @@ app.get('/api/events', async (req, res) =>{
     // res.json(events);
 })
 
+// get one event
+app.get("/api/events/:id", async(req, res) => {
+    try {
+        const { id } = req.params;
+        const event = await db.query("SELECT * FROM events WHERE id = $1", [id])
+        res.json(event.rows[0])
+    } catch (error) {
+        console.error(error.message)
+    }
+})
 
+// update the favorites column
+app.put("/api/events/favorite/:id", async (req,res) => {
+    try {
+        const id = req.params.id;
+        let favorite = req.body.favorite;
+        // console.log("id", id, "favorite", favorite, req.body)
+        const updateFavorite = await db.query("UPDATE events SET favorite = $1 WHERE id = $2", [favorite, id]);
+        // console.log("update favorite", updateFavorite)
+
+        res.json({message: "Favorite is updated", newFaveValue: favorite});
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// edit an event
+
+app.put("/api/events/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { title, location, eventtime } = req.body;
+        // const eventEdited = {
+        //     title: req.body.title,
+        //     location: req.body.location,
+        //     eventtime: req.body.eventtime,
+        // }
+        console.log("id", id, req.body)
+        const updateEvent = await db.query("UPDATE events SET title = $1, location = $2, eventtime = $3 WHERE id = $4", 
+            [title, location, eventtime, id]);
+
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+
+// add a new event
+app.post("/api/events/", async (req, res) => {
+    try {
+        console.log(req.body)
+        const newEvent = {
+            title: req.body.title,
+            location: req.body.location,
+            eventtime: req.body.eventtime
+        }
+
+        const addEvent = await db.query("INSERT INTO events (title, location, eventtime) VALUES ($1, $2, $3) RETURNING *", 
+            [newEvent.title, newEvent.location, newEvent.eventtime]);
+        let response = addEvent.rows[0];
+
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// delete an event
+app.delete("/api/events/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteEvent = await db.query("DELETE FROM events WHERE id = $1", [id])
+        // res.json("Event was deleted")
+
+        const { rows: events } = await db.query('SELECT * FROM events');
+        res.send(events);
+    } catch (error) {
+        console.error(error.message)
+    }
+})
 
 app.listen(PORT, () => console.log(`Hola! Server running on Port http://localhost:${PORT}`));

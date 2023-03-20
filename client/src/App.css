@@ -1,5 +1,6 @@
 .App {
-  display: grid;
+  display: grid; 
+  /* display: grid originally */
   align-items: center;
   justify-content: center;
   margin-top: 50px;
@@ -12,4 +13,59 @@
 h1 {
   color: #00556e;
   margin-bottom: 50px !important;
+  align-items: center;
+}
+
+.onClick {
+  cursor: pointer;
+}
+
+@keyframes tilt-n-move-shaking {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(5px, 5px) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(0, 0) rotate(0eg);
+  }
+
+  75% {
+    transform: translate(-5px, 5px) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.onClick:hover {
+  animation: tilt-n-move-shaking 0.25s infinite;
+}
+
+.favorite {
+  color: rgb(254, 31, 124);
+}
+
+.button {
+  margin: 60px;
+  margin-left: 40%;
+  flex-direction: row;
+  width: 200px;
+  justify-content: center;
+}
+
+.trashIcon {
+  flex-direction: column;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+
+.newEventForm, .editEventForm {
+  padding: 20px;
 }
