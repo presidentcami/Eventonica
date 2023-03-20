@@ -185,28 +185,28 @@ Your DB should look like this inside the psql terminal
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-Add an Event
+### Add an Event
 
 
 
 https://user-images.githubusercontent.com/103149318/226381976-fb5d4793-097b-40a4-ba3b-2a2886fdbb74.mp4
 
 
-Delete an Event
+### Delete an Event
 
 
 
 https://user-images.githubusercontent.com/103149318/226381737-45690c64-c037-45d8-8124-e2e722c7ca79.mp4
 
 
-Edit an Event
+### Edit an Event
 
 
 
 https://user-images.githubusercontent.com/103149318/226382183-27b5c55f-9647-4c53-9011-4092d3bc0bb0.mp4
 
 
-Favorite an Event
+### Favorite an Event
 
 
 
